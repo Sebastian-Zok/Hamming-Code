@@ -1,0 +1,11 @@
+{
+    "name": "hammingcode",
+    "version": "1.0.0",
+    "description": "",
+    "main": "encoder.js",
+    "scripts": {
+        "encoder": "tsc encoder.ts --lib es6,dom -w"
+    },
+    "author": "",
+    "license": "ISC"
+}
