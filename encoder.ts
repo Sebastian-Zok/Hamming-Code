@@ -13,6 +13,7 @@ function encode(e: Event): void {
     bitSequence = bitSequence.filter(function (value) {
       return !Number.isNaN(value);
     });
+    bitSequence = bitSequence.reverse();
 
     bitSequence.splice(0, 0, 0);
     bitSequence.splice(1, 0, 0);
@@ -25,31 +26,29 @@ function encode(e: Event): void {
         indices.push(i + 1);
       }
     }
+
     let result: String = indices
       .reduce(function (a, b) {
-        return a | b;
+        return a ^ b;
       }, 0)
       .toString(2);
-    console.log(result);
+    result = ("0000" + result).slice(-4);
 
-    bitSequence.splice(0, 1, Number(result.charAt(0)));
-    bitSequence.splice(1, 1, Number(result.charAt(1)));
-    bitSequence.splice(3, 1, Number(result.charAt(2)));
-    bitSequence.splice(7, 1, Number(result.charAt(3)));
+    bitSequence.splice(0, 1, Number(result.charAt(3)));
+    bitSequence.splice(1, 1, Number(result.charAt(2)));
+    bitSequence.splice(3, 1, Number(result.charAt(1)));
+    bitSequence.splice(7, 1, Number(result.charAt(0)));
 
-    let out: String = bitSequence.toString().replace(/,/g, "");
-
+    let out: String = bitSequence.reverse().toString().replace(/,/g, "");
     output.innerText = "Output: " + out;
   }
 }
 
 // Helper functions for input validation
-
 function inputIsValid(inputArray: Array<number>): boolean {
   let input: number = +inputArray.join("");
 
   if (!isBinary(input) || isNaN(input)) {
-    console.log(input);
     output.innerText =
       "Output: Invalid Input (Please enter zeros and ones only)";
     return false;

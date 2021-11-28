@@ -1,0 +1,14 @@
+[package]
+name = "Hamming-Code"
+version = "0.1.0"
+authors = ["Sebastian Zok <sebastianpaulzok@gmail.com>"]
+description = "A simple Typescript Hamming-Code encoder and Rust decoder"
+license = "MIT/Apache-2.0"
+repository = ""
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2"

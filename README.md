@@ -1,1 +1,1 @@
-### Hamming-Code Encoder written in Rust and a Decoder written in Typescript
+### Simple Hamming-Code encoder written in Typescript and a decoder using Rust (WebAssembly)
